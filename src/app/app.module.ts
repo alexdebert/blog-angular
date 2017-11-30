@@ -1,16 +1,24 @@
+// Core
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ClarityModule } from 'clarity-angular';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 
-
+// Components
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
-
-import {PostsService} from './posts.service';
-import { AppRoutingModule } from './/app-routing.module';
 import { HeaderComponent } from './header/header.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+
+// Services
+import {PostsService} from './posts.service';
+
+// Routing
+import { AppRoutingModule } from './app-routing.module';
+
+// Interceptors
+import { LoadingInterceptor } from './loading.interceptor';
 
 
 @NgModule({
@@ -18,16 +26,23 @@ import { HeaderComponent } from './header/header.component';
     AppComponent,
     PostsComponent,
     PostDetailComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
-    ClarityModule.forRoot(),
-    AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ClarityModule,
+    AppRoutingModule
   ],
   providers: [
-    PostsService
+    PostsService,
+    LoadingInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
