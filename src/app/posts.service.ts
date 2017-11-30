@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError } from 'rxjs/operators';
+import 'rxjs/add/observable/forkJoin';
 
 import { Post } from './post';
 import { Comment } from './comment';
@@ -26,18 +27,23 @@ export class PostsService {
       );
   }
 
-  getPostWithComments (postId: number): Observable<Post> {
+  getPostWithComments (postId: number): Observable<any> {
     const url = `${this.basePath}/posts/${postId}`;
-    return this.http.get<Post>(url).pipe(
-      catchError(this.handleError<Post>(`getPostWithComments postId=${postId}`))
-    );
+    let getPost = this.http.get(url).map(res => res);
+    let getComments = this.getComment(postId);
+
+    return Observable.forkJoin([getPost, getComments])
+      .map(responses => {
+        let post = responses[0];
+        post.comments = responses[1];
+
+        return post;
+      });
   }
 
-  getComment(postId: number): Observable<Comment[]> {
+  getComment(postId: number): Observable<any> {
     const url = `${this.basePath}/posts/${postId}/comments`;
-    return this.http.get<Comment[]>(url).pipe(
-      catchError(this.handleError<Comment[]>(`getComment postId=${postId}`))
-    );
+    return this.http.get(url).map(res => res);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

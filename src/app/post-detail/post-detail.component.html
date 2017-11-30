@@ -9,7 +9,7 @@
         <th>{{ comment }}</th>
       </tr>
       </thead>
-      <tbody *ngFor="let comment of comments">
+      <tbody *ngFor="let comment of post.comments">
       <tr>
         <td class="left">
           <a href="mailto:{{comment.email}}"> {{comment.email}} </a>

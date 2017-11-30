@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Post } from '../post';
-import { Comment } from '../comment';
 
 import { PostsService } from '../posts.service';
 
@@ -26,19 +25,12 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getPostWithComments();
-    this.getComment();
   }
 
   getPostWithComments(): void {
     const postId = +this.route.snapshot.paramMap.get('id');
     this.postsService.getPostWithComments(postId)
       .subscribe(post => this.post = post);
-  }
-
-  getComment(): void {
-    const postId = +this.route.snapshot.paramMap.get('id');
-    this.postsService.getComment(postId)
-      .subscribe(comments => this.comments = comments);
   }
 
   goBack(): void {
