@@ -15,6 +15,8 @@ import { PostsService } from '../posts.service';
 export class PostDetailComponent implements OnInit {
   @Input() post : Post;
   @Input() comments : Comment[];
+  email = 'Email';
+  comment = 'Comment';
 
   constructor(
     private route: ActivatedRoute,
