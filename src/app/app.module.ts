@@ -10,13 +10,15 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 
 import {PostsService} from "./posts.service";
 import { AppRoutingModule } from './/app-routing.module';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

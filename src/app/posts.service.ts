@@ -15,11 +15,11 @@ export class PostsService {
   private basePath = 'https://jsonplaceholder.typicode.com';
 
   constructor(
-    private http: HttpClient,
+    private http: HttpClient
   ) { }
 
   getPosts(): Observable<Post[]> {
-    const url = `${this.basePath}/posts`
+    const url = `${this.basePath}/posts`;
     return this.http.get<Post[]>(url)
       .pipe(
         catchError(this.handleError('getHeroes', []))

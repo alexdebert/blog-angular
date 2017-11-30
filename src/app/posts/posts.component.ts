@@ -12,6 +12,8 @@ import { PostsService } from '../posts.service';
 })
 export class PostsComponent implements OnInit {
 
+  title = 'All Posts';
+  view = 'View';
   posts : Post[];
 
   constructor(private postsService: PostsService) { }
