@@ -7,8 +7,6 @@ import { catchError } from 'rxjs/operators';
 import 'rxjs/add/observable/forkJoin';
 
 import { Post } from './post';
-import { Comment } from './comment';
-
 
 @Injectable()
 export class PostsService {
@@ -29,12 +27,12 @@ export class PostsService {
 
   getPostWithComments (postId: number): Observable<any> {
     const url = `${this.basePath}/posts/${postId}`;
-    let getPost = this.http.get(url).map(res => res);
-    let getComments = this.getComment(postId);
+    const getPost = this.http.get(url).map(res => res);
+    const getComments = this.getComment(postId);
 
     return Observable.forkJoin([getPost, getComments])
       .map(responses => {
-        let post = responses[0];
+        const post = responses[0];
         post.comments = responses[1];
 
         return post;

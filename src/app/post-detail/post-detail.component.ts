@@ -12,8 +12,8 @@ import { PostsService } from '../posts.service';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit {
-  @Input() post : Post;
-  @Input() comments : Comment[];
+  @Input() post: Post;
+  @Input() comments: Comment[];
   email = 'Email';
   comment = 'Comment';
 

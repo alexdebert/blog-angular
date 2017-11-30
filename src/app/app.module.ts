@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ClarityModule } from "clarity-angular";
-import { HttpClientModule }    from '@angular/common/http';
+import { ClarityModule } from 'clarity-angular';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 
-import {PostsService} from "./posts.service";
+import {PostsService} from './posts.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { HeaderComponent } from './header/header.component';
 
