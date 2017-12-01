@@ -37,7 +37,7 @@ import { CallInterceptor } from './services/call.interceptor';
   ],
   providers: [
     PostsService,
-    AppComponent,
+    LoadingSpinnerComponent,
     CallInterceptor,
     {
       provide: HTTP_INTERCEPTORS,

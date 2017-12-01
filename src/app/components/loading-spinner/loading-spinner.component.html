@@ -1,3 +1,7 @@
-<span class="spinner spinner-lg">
-  Loading...
-</span>
+<ng-container *ngIf="loading">
+  <div class="spinner-container">
+    <span class="spinner spinner-lg">
+      Loading...
+    </span>
+  </div>
+</ng-container>

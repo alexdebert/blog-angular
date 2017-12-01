@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-loading-spinner',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadingSpinnerComponent implements OnInit {
 
-  constructor() { }
+
+  @Input() loading: boolean;
 
   ngOnInit() {
+    this.loading = true;
+  }
+
+  isLoading() {
+    this.loading = true;
+  }
+
+  isLoaded() {
+    this.loading = false;
   }
 
 }
