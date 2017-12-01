@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { PostsService } from './posts.service';
+import { PostsService } from './posts.service.ts';
 
 describe('PostsService', () => {
   beforeEach(() => {
