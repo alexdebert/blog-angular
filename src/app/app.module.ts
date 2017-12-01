@@ -1,16 +1,20 @@
+// Core
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ClarityModule } from 'clarity-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { ClarityModule } from 'clarity-angular';
 
-
+// Components
 import { AppComponent } from './app.component';
-import { PostsComponent } from './posts/posts.component';
-import { PostDetailComponent } from './post-detail/post-detail.component';
+import { PostsComponent } from './pages/posts/posts.component';
+import { PostDetailComponent } from './pages/post-detail/post-detail.component';
+import { HeaderComponent } from './components/header/header.component';
 
-import {PostsService} from './posts.service';
-import { AppRoutingModule } from './/app-routing.module';
-import { HeaderComponent } from './header/header.component';
+// Services
+import {PostsService} from './services/posts.service';
+
+// Route
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -22,7 +26,7 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     BrowserModule,
-    ClarityModule.forRoot(),
+    ClarityModule,
     AppRoutingModule,
     HttpClientModule
   ],

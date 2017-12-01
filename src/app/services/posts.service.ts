@@ -6,7 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError } from 'rxjs/operators';
 import 'rxjs/add/observable/forkJoin';
 
-import { Post } from './post';
+import { Post } from '../models/post';
 
 @Injectable()
 export class PostsService {
