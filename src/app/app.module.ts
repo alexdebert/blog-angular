@@ -17,9 +17,6 @@ import {PostsService} from './services/posts.service';
 // Route
 import { AppRoutingModule } from './app-routing.module';
 
-// Interceptors
-import { CallInterceptor } from './services/call.interceptor';
-
 
 @NgModule({
   declarations: [
@@ -36,14 +33,7 @@ import { CallInterceptor } from './services/call.interceptor';
     HttpClientModule
   ],
   providers: [
-    PostsService,
-    LoadingSpinnerComponent,
-    CallInterceptor,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: CallInterceptor,
-      multi: true
-    }
+    PostsService
   ],
   bootstrap: [AppComponent]
 })

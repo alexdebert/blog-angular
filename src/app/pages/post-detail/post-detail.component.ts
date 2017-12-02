@@ -2,6 +2,8 @@ import { Component, OnInit , Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
+import {Subject} from 'rxjs/Subject';
+
 import { Post } from '../../models/post';
 
 import { PostsService } from '../../services/posts.service';
@@ -12,7 +14,7 @@ import { PostsService } from '../../services/posts.service';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit {
-  @Input() post: Post;
+  postObservable = new Subject<Post>();
   @Input() comments: Comment[];
   email = 'Email';
   comment = 'Comment';
@@ -30,7 +32,7 @@ export class PostDetailComponent implements OnInit {
   getPostWithComments(): void {
     const postId = +this.route.snapshot.paramMap.get('id');
     this.postsService.getPostWithComments(postId)
-      .subscribe(post => this.post = post);
+      .subscribe(post => this.postObservable.next(post));
   }
 
   goBack(): void {

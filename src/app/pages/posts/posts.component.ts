@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Post } from '../../models/post';
 
+import {Subject} from 'rxjs/Subject';
+
 import { PostsService } from '../../services/posts.service';
 
 
@@ -12,9 +14,9 @@ import { PostsService } from '../../services/posts.service';
 })
 export class PostsComponent implements OnInit {
 
+  postsObservable = new Subject<Post[]>();
   title = 'All Posts';
   view = 'View';
-  posts: Post[];
 
   constructor(private postsService: PostsService) { }
 
@@ -24,7 +26,7 @@ export class PostsComponent implements OnInit {
 
   getPosts(): void {
     this.postsService.getPosts()
-      .subscribe(posts => this.posts = posts);
+      .subscribe(posts => this.postsObservable.next(posts));
   }
 
 }

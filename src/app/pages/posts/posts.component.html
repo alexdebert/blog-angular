@@ -1,4 +1,4 @@
-<div class="content-area">
+<div class="content-area" *ngIf="postsObservable| async as posts; else loading">
   <h1>
     {{ title }}
   </h1>
@@ -22,3 +22,6 @@
     </div>
   </div>
 </div>
+<ng-template #loading>
+  <app-loading-spinner></app-loading-spinner>
+</ng-template>

@@ -1,5 +1,4 @@
-<div class="content-area">
-  <div *ngIf="post">
+<div class="content-area" *ngIf="postObservable| async as post; else loading">
     <h3>{{ post.title | uppercase }} </h3>
     <p class="post-body">{{post.body | uppercase}}</p>
     <table class="table table-noborder">
@@ -19,5 +18,7 @@
       </tbody>
     </table>
     <a class="btn btn-sm btn-link" (click)="goBack()">Back</a>
-  </div>
 </div>
+<ng-template #loading>
+  <app-loading-spinner></app-loading-spinner>
+</ng-template>
