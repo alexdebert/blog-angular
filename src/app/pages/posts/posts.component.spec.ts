@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { PostsComponent } from './posts.component.ts';
+import { HttpClientModule } from '@angular/common/http';
+
+import { PostsComponent } from './posts.component';
+import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
+
+import { PostsService } from '../../services/posts.service';
 
 describe('PostsComponent', () => {
   let component: PostsComponent;
@@ -8,7 +14,17 @@ describe('PostsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostsComponent ]
+      declarations: [
+        PostsComponent,
+        LoadingSpinnerComponent
+      ],
+      imports: [
+        RouterTestingModule,
+        HttpClientModule
+      ],
+      providers: [
+        PostsService
+      ]
     })
     .compileComponents();
   }));
