@@ -6,16 +6,16 @@
     <div *ngFor="let post of posts" class="col-xs-4">
       <div class="card">
         <div class="card-header">
-          {{post.title | uppercase}}
+          {{ post.title | uppercase }}
         </div>
         <div class="card-block">
           <div class="card-text">
-            {{post.body | uppercase}}
+            {{ post.body | uppercase }}
           </div>
         </div>
         <div class="card-footer">
           <a routerLink="/post/{{post.id}}">
-            <span class="btn btn-sm btn-link">{{view}}</span>
+            <span class="btn btn-sm btn-link">{{ view }}</span>
           </a>
         </div>
       </div>

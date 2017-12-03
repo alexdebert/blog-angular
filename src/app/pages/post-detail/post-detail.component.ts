@@ -1,12 +1,11 @@
 import { Component, OnInit , Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
 import {Subject} from 'rxjs/Subject';
 
 import { Post } from '../../models/post';
-
 import { PostsService } from '../../services/posts.service';
+import { email, comment, back } from '../../shared/constants';
 
 @Component({
   selector: 'app-post-detail',
@@ -15,9 +14,9 @@ import { PostsService } from '../../services/posts.service';
 })
 export class PostDetailComponent implements OnInit {
   postObservable = new Subject<Post>();
-  @Input() comments: Comment[];
-  email = 'Email';
-  comment = 'Comment';
+  @Input() email = email;
+  @Input() comment = comment;
+  @Input() back = back;
 
   constructor(
     private route: ActivatedRoute,

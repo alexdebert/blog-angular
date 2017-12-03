@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { headerTitle, githubUrl } from '../../shared/constants';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +9,7 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  title = 'Angular Challenge - Gl';
+  @Input() title = headerTitle;
+  @Input() githubUrl = githubUrl;
 
 }

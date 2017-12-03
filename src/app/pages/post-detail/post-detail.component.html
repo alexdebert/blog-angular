@@ -1,6 +1,6 @@
 <div class="content-area" *ngIf="postObservable| async as post; else loading">
     <h3>{{ post.title | uppercase }} </h3>
-    <p class="post-body">{{post.body | uppercase}}</p>
+    <p class="post-body">{{ post.body | uppercase }}</p>
     <table class="table table-noborder">
       <thead>
       <tr>
@@ -11,13 +11,13 @@
       <tbody *ngFor="let comment of post.comments">
       <tr>
         <td class="left">
-          <a href="mailto:{{comment.email}}"> {{comment.email}} </a>
+          <a href="mailto:{{comment.email}}"> {{ comment.email }} </a>
         </td>
-        <td class="left">{{comment.body }}</td>
+        <td class="left">{{ comment.body }}</td>
       </tr>
       </tbody>
     </table>
-    <a class="btn btn-sm btn-link" (click)="goBack()">Back</a>
+    <a class="btn btn-sm btn-link" (click)="goBack()">{{ back }}</a>
 </div>
 <ng-template #loading>
   <app-loading-spinner></app-loading-spinner>

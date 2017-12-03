@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/map';
 
 import { Post } from '../models/post';
+import { basePath } from '../shared/constants';
 
 @Injectable()
 export class PostsService {
 
-  private basePath = 'https://jsonplaceholder.typicode.com';
+  private basePath = basePath;
 
   constructor(
     private http: HttpClient
